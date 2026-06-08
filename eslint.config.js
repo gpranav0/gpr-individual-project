@@ -14,6 +14,7 @@ export default defineConfig([
       reactRefresh.configs.vite,
     ],
     languageOptions: {
+<<<<<<< HEAD
       globals: {
         ...globals.browser,
         ...globals.jest,
@@ -26,5 +27,10 @@ export default defineConfig([
       'react-hooks/set-state-in-effect': 'off',
       'react-refresh/only-export-components': 'off'
     },
+=======
+      globals: globals.browser,
+      parserOptions: { ecmaFeatures: { jsx: true } },
+    },
+>>>>>>> 80aae629ef7d66596e0325107301093c0d86c487
   },
 ])
