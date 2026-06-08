@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { SettingsContext } from '../context/SettingsContext';
 import General from '../pages/General';
@@ -17,7 +17,7 @@ const SettingsContainer = () => {
     setSuccessMessage('');
   }, [category]);
 
-  const handleSave = useCallback(async (categoryName, newSettings) => {
+  const handleSave = async (categoryName, newSettings) => {
     setIsSaving(true);
     setSuccessMessage('');
     await new Promise(resolve => setTimeout(resolve, 800));
@@ -25,7 +25,7 @@ const SettingsContainer = () => {
     setIsSaving(false);
     setSuccessMessage('Settings saved successfully!');
     setTimeout(() => setSuccessMessage(''), 3000);
-  }, [updateSettings]);
+  };
 
   const totalEnabledNotifications = useMemo(() => {
     return Object.values(settings.notifications).filter(Boolean).length;
@@ -55,7 +55,7 @@ const SettingsContainer = () => {
     <ErrorBoundary>
       <div className="glass-panel" style={{ position: 'relative' }}>
         {successMessage && (
-          <div role="status" aria-live="polite" style={{
+          <div style={{
             position: 'absolute', top: '-1rem', left: '0', right: '0', 
             backgroundColor: 'var(--success-color)', color: 'white', 
             padding: '0.5rem', borderRadius: 'var(--radius-md)', textAlign: 'center',

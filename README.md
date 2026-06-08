@@ -44,17 +44,6 @@ A comprehensive Single Page Application (SPA) built to manage application settin
 - **Location**: `src/routes/AppRoutes.jsx` & `src/routes/PrivateRoute.jsx`
 - **Implementation**: Uses React Router DOM for Basic Routing, Dynamic Routing (`/settings/:category`), Nested Routing (`/settings/account/profile`), and Protected Routing (`PrivateRoute` requiring login for Account).
 
-### 11. Performance Optimization
-- **Location**: `src/components/common/*` and `src/containers/SettingsContainer.jsx`
-- **Implementation**: 
-  - `React.memo`: Applied to all dumb components (ToggleSwitch, TextInput, Dropdown, SaveButton) to prevent unnecessary re-renders.
-  - `useMemo`: Used for derived states like total enabled notifications and context values.
-  - `useCallback`: Memoizes event handlers like `handleSave` passed down to children.
-
-### 12. Accessibility
-- **Location**: Entire Application
-- **Implementation**: Semantic HTML, proper `aria-labels` (e.g., `aria-checked` on ToggleSwitch, `aria-invalid` on inputs), keyboard navigability, and focus management are integrated.
-
 ### Testing
 - **Unit Tests**: Found in `src/tests/` verifying `ToggleSwitch` state and `validation` functions.
 - **Integration Test**: Validates the complete flow from changing a setting to it being saved in `localStorage`.

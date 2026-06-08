@@ -1,7 +1,5 @@
 import React from 'react';
-import { Save } from 'lucide-react';
-
-const SaveButton = React.memo(({ onClick, isSaving, disabled, type = "button" }) => {
+const SaveButton = ({ onClick, isSaving, disabled, type = "button" }) => {
   return (
     <button 
       type={type}
@@ -9,11 +7,10 @@ const SaveButton = React.memo(({ onClick, isSaving, disabled, type = "button" })
       onClick={onClick}
       disabled={disabled || isSaving}
     >
-      <Save size={18} />
+      <span style={{ fontSize: '1.2rem', marginRight: '4px' }}>💾</span>
       {isSaving ? 'Saving...' : 'Save Settings'}
     </button>
   );
-});
+};
 
-SaveButton.displayName = 'SaveButton';
 export default SaveButton;

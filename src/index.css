@@ -193,7 +193,7 @@ body {
   padding: 0;
 }
 
-.toggle-switch[aria-checked="true"] {
+.toggle-switch.checked {
   background-color: var(--primary-color);
 }
 
@@ -209,7 +209,7 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-.toggle-switch[aria-checked="true"] .toggle-thumb {
+.toggle-switch.checked .toggle-thumb {
   transform: translateX(20px);
 }
 

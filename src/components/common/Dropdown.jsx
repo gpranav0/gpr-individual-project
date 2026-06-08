@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dropdown = React.memo(({ id, label, value, onChange, options, description }) => {
+const Dropdown = ({ id, label, value, onChange, options, description }) => {
   return (
     <div className="form-group">
       <label htmlFor={id} className="form-label">{label}</label>
@@ -19,7 +19,6 @@ const Dropdown = React.memo(({ id, label, value, onChange, options, description 
       </select>
     </div>
   );
-});
+};
 
-Dropdown.displayName = 'Dropdown';
 export default Dropdown;

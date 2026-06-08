@@ -89,7 +89,6 @@ const Account = ({ view }) => {
               type="password"
               ref={newPasswordRef}
               className="text-input"
-              aria-describedby="new-pass-hint"
             />
             <p id="new-pass-hint" className="toggle-desc" style={{ marginTop: '0.25rem' }}>Must be at least 8 characters long.</p>
           </div>

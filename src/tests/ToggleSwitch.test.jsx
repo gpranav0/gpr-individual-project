@@ -18,17 +18,17 @@ const TestWrapper = () => {
 describe('ToggleSwitch Component', () => {
   it('toggles state correctly when clicked', () => {
     render(<TestWrapper />);
-    const toggle = screen.getByRole('switch', { name: /test toggle/i });
+    const toggle = document.getElementById('test-toggle');
     
-    // Initial state
-    expect(toggle).toHaveAttribute('aria-checked', 'false');
+    // Initial state - should not have 'checked' class
+    expect(toggle).not.toHaveClass('checked');
     
     // Click to toggle
     fireEvent.click(toggle);
-    expect(toggle).toHaveAttribute('aria-checked', 'true');
+    expect(toggle).toHaveClass('checked');
     
     // Click again to toggle back
     fireEvent.click(toggle);
-    expect(toggle).toHaveAttribute('aria-checked', 'false');
+    expect(toggle).not.toHaveClass('checked');
   });
 });

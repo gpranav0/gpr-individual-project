@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextInput = React.memo(({ 
+const TextInput = ({ 
   id, 
   label, 
   type = 'text', 
@@ -22,17 +22,14 @@ const TextInput = React.memo(({
         onChange={onChange}
         className={`text-input ${error ? 'error' : ''}`}
         placeholder={placeholder}
-        aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={error ? `${id}-error` : undefined}
       />
       {error && (
-        <div id={`${id}-error`} className="error-message" role="alert">
+        <div id={`${id}-error`} className="error-message">
           {error}
         </div>
       )}
     </div>
   );
-});
+};
 
-TextInput.displayName = 'TextInput';
 export default TextInput;

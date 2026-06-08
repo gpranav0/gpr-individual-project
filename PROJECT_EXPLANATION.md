@@ -6,10 +6,9 @@ This document provides a detailed breakdown of the frameworks, libraries, archit
 
 | Technology | Purpose in Project |
 | :--- | :--- |
-| **React (v19)** | The core UI library used to build the entire Single Page Application (SPA). We utilized React Hooks (`useState`, `useEffect`, `useContext`, `useRef`, `useMemo`, `useCallback`) extensively. |
+| **React (v19)** | The core UI library used to build the entire Single Page Application (SPA). We utilized React Hooks (`useState`, `useEffect`, `useContext`, `useRef`, `useMemo`) extensively. |
 | **React Router DOM (v7)** | Used for handling all client-side routing. It enables seamless navigation between settings categories without reloading the page, and allows us to implement Protected Routes and Nested Routes. |
 | **Vite (v5)** | The build tool and development server. Chosen over Create React App (which is deprecated) for its lightning-fast Hot Module Replacement (HMR) and modern ES module support. |
-| **Lucide React** | An open-source icon library used to render the beautiful, scalable SVG icons seen in the Sidebar and Save buttons. |
 | **Jest & React Testing Library** | The testing framework suite used to write our Unit and Integration tests. Jest provides the test runner and assertions, while React Testing Library provides tools to test components exactly as users interact with them. |
 
 ---
@@ -61,11 +60,5 @@ In `src/routes/AppRoutes.jsx`, we use several advanced routing concepts:
 - **Nested Routing**: `<Route path="account"> <Route path="profile" /> </Route>` allows rendering sub-views inside the Account page using the `<Outlet />` component.
 - **Protected Routing**: The `<PrivateRoute />` component intercepts requests to the Account page. It checks the `AuthContext` to see if `isAuthenticated` is true. If false, it uses `<Navigate to="/login" />` to force a redirect.
 
-### Performance Optimizations
-To ensure the application remains lightning fast, we implemented several optimizations:
-1. `React.memo`: Wrapped around all dumb components (`ToggleSwitch`, `TextInput`, etc.). This tells React to skip re-rendering these components unless their specific `props` change.
-2. `useCallback`: Used in `SettingsContainer.jsx` for the `handleSave` function. This prevents the function from being recreated on every render, which in turn prevents the child components from unnecessarily re-rendering.
-3. `useMemo`: Used to calculate **Derived State**. In `SettingsContainer.jsx`, we calculate `totalEnabledNotifications` using `useMemo`. This means the array filtering logic only executes when the `notifications` object actually changes, rather than on every single keystroke in the app.
-
-### Accessibility
-All custom components include `aria-labels` and `aria-describedby`. For instance, the custom `ToggleSwitch` visually hides a native `<button>` element but uses `aria-checked` and `role="switch"` so screen readers properly announce its state to visually impaired users.
+### Derived State
+`useMemo` is used in `SettingsContainer.jsx` to calculate `totalEnabledNotifications`. This means the array filtering logic only executes when the `notifications` object actually changes, demonstrating the concept of derived state.

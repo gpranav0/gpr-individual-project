@@ -1,14 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Settings, Bell, Shield, Palette, User } from 'lucide-react';
 
 const Sidebar = () => {
   const navItems = [
-    { path: '/settings/general', label: 'General', icon: <Settings size={20} /> },
-    { path: '/settings/notifications', label: 'Notifications', icon: <Bell size={20} /> },
-    { path: '/settings/privacy', label: 'Privacy', icon: <Shield size={20} /> },
-    { path: '/settings/appearance', label: 'Appearance', icon: <Palette size={20} /> },
-    { path: '/settings/account', label: 'Account', icon: <User size={20} /> },
+    { path: '/settings/general', label: 'General', icon: '⚙️' },
+    { path: '/settings/notifications', label: 'Notifications', icon: '🔔' },
+    { path: '/settings/privacy', label: 'Privacy', icon: '🛡️' },
+    { path: '/settings/appearance', label: 'Appearance', icon: '🎨' },
+    { path: '/settings/account', label: 'Account', icon: '👤' },
   ];
 
   return (
@@ -21,7 +20,7 @@ const Sidebar = () => {
             to={item.path} 
             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
           >
-            {item.icon}
+            <span className="nav-icon" style={{ fontSize: '1.2rem' }}>{item.icon}</span>
             <span>{item.label}</span>
           </NavLink>
         ))}
