@@ -30,7 +30,7 @@ const Privacy = ({ data, onSave, isSaving }) => {
             { label: 'Friends - Only mutual friends', value: 'friends' },
           ]}
         />
-        
+
         <div style={{ marginTop: '1.5rem' }}>
           <ToggleSwitch
             id="dataSharing"

@@ -1,28 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* -------------------------------------------------------
+   Custom theme tokens (used by non-Tailwind legacy CSS)
+   and the data-theme dark mode toggle applied by App.jsx
+   COURSE REQUIREMENT: Theme System
+------------------------------------------------------- */
 :root {
-  --bg-color: #f8fafc;
-  --surface-color: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #64748b;
-  --primary-color: #6366f1; /* Indigo */
+  --bg-color: #F8FAFC;
+  --surface-color: rgba(255, 255, 255, 0.65);
+  --primary-color: #6366f1;
   --primary-hover: #4f46e5;
-  --border-color: #e2e8f0;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --border-color: rgba(226, 232, 240, 0.8);
   --error-color: #ef4444;
   --success-color: #10b981;
-  --transition-speed: 0.2s;
+  --transition-speed: 0.3s;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --shadow-md: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --glass-border: rgba(255, 255, 255, 0.4);
 }
 
 [data-theme='dark'] {
-  --bg-color: #0f172a;
-  --surface-color: #1e293b;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --border-color: #334155;
+  --bg-color: #0F172A;
+  --surface-color: rgba(30, 41, 59, 0.65);
+  --primary-color: #818cf8;
+  --primary-hover: #6366f1;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --border-color: rgba(51, 65, 85, 0.8);
+  --error-color: #f87171;
+  --success-color: #34d399;
+  --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -34,6 +45,10 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
   color: var(--text-primary);
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
   line-height: 1.5;
@@ -48,9 +63,12 @@ body {
 .sidebar {
   width: 260px;
   background-color: var(--surface-color);
-  border-right: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--glass-border);
   padding: 2rem 1rem;
   transition: all var(--transition-speed) ease;
+  z-index: 10;
 }
 
 .sidebar-title {
@@ -95,12 +113,19 @@ body {
 /* Premium Component Styles */
 .glass-panel {
   background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-md);
   margin-bottom: 2rem;
   transition: all var(--transition-speed) ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.1);
 }
 
 /* Typography */
@@ -109,6 +134,7 @@ body {
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
+
 .page-description {
   color: var(--text-secondary);
   margin-bottom: 2rem;
@@ -134,18 +160,25 @@ body {
   color: var(--text-primary);
 }
 
-.text-input, .dropdown-select {
+.text-input,
+.dropdown-select {
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-color);
+  border: 1px solid var(--glass-border);
+  background-color: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
   font-family: inherit;
-  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  transition: all var(--transition-speed) ease;
 }
 
-.text-input:focus, .dropdown-select:focus {
+[data-theme='dark'] .text-input,
+[data-theme='dark'] .dropdown-select {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.text-input:focus,
+.dropdown-select:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
@@ -154,6 +187,7 @@ body {
 .text-input.error {
   border-color: var(--error-color);
 }
+
 .error-message {
   color: var(--error-color);
   font-size: 0.875rem;
@@ -176,6 +210,7 @@ body {
 .toggle-label {
   font-weight: 500;
 }
+
 .toggle-desc {
   font-size: 0.875rem;
   color: var(--text-secondary);
@@ -251,6 +286,7 @@ body {
   min-height: 100vh;
   background-color: var(--bg-color);
 }
+
 .error-content {
   background-color: var(--surface-color);
   padding: 3rem;

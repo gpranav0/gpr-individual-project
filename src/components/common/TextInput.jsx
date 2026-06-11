@@ -1,12 +1,12 @@
 import React from 'react';
 
-const TextInput = ({ 
-  id, 
-  label, 
-  type = 'text', 
-  value, 
-  onChange, 
-  error, 
+const TextInput = ({
+  id,
+  label,
+  type = 'text',
+  value,
+  onChange,
+  error,
   placeholder,
   required
 }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 const SaveButton = ({ onClick, isSaving, disabled, type = "button" }) => {
   return (
-    <button 
+    <button
       type={type}
       className="btn btn-primary"
       onClick={onClick}

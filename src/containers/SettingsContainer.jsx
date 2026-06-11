@@ -5,6 +5,7 @@ import General from '../pages/General';
 import Notifications from '../pages/Notifications';
 import Privacy from '../pages/Privacy';
 import Appearance from '../pages/Appearance';
+import Portfolio from '../pages/Portfolio';
 import ErrorBoundary from '../components/common/ErrorBoundary';
 
 const SettingsContainer = () => {
@@ -41,12 +42,14 @@ const SettingsContainer = () => {
         return <Privacy data={settings.privacy} onSave={(data) => handleSave('privacy', data)} isSaving={isSaving} />;
       case 'appearance':
         return <Appearance data={settings.theme} onSave={(data) => handleSave('theme', data)} isSaving={isSaving} />;
+      case 'portfolio':
+        return <Portfolio />;
       default:
         return null;
     }
   };
 
-  const isValidCategory = ['general', 'notifications', 'privacy', 'appearance'].includes(category);
+  const isValidCategory = ['general', 'notifications', 'privacy', 'appearance', 'portfolio'].includes(category);
   if (!isValidCategory) {
     return <Navigate to="/settings/general" replace />;
   }

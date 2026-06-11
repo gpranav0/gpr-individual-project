@@ -5,12 +5,12 @@ import { validatePassword } from '../utils/validation';
 
 const Account = ({ view }) => {
   const { logout } = useContext(AuthContext);
-  
+
   // Uncontrolled components using useRef
   const oldPasswordRef = useRef(null);
   const newPasswordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
-  
+
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isSaving, setIsSaving] = useState(false);
@@ -68,7 +68,7 @@ const Account = ({ view }) => {
         <p className="toggle-desc" style={{ marginBottom: '1rem' }}>
           This form uses uncontrolled inputs via <code>useRef</code> as required.
         </p>
-        
+
         {error && <div className="error-message" role="alert" style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderRadius: 'var(--radius-md)' }}>{error}</div>}
         {success && <div role="status" style={{ marginBottom: '1rem', padding: '0.75rem', color: 'var(--success-color)', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: 'var(--radius-md)' }}>{success}</div>}
 

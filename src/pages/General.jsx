@@ -15,7 +15,7 @@ const General = ({ data, onSave, isSaving }) => {
   const handleChange = (field) => (e) => {
     const value = e.target.value;
     setFormData(prev => ({ ...prev, [field]: value }));
-    
+
     // Real-time validation
     if (field === 'username') {
       setErrors(prev => ({ ...prev, username: validateUsername(value) }));
@@ -29,12 +29,12 @@ const General = ({ data, onSave, isSaving }) => {
     e.preventDefault();
     const usernameError = validateUsername(formData.username);
     const emailError = validateEmail(formData.email);
-    
+
     if (usernameError || emailError) {
       setErrors({ username: usernameError, email: emailError });
       return;
     }
-    
+
     onSave(formData);
   };
 
